@@ -46,7 +46,7 @@ public class Path {
 	 * @param percentTraveled a distance along the path
 	 * @return the screen coordinate of this position along the path
 	 */
-	
+
 	public Point convertToCoordinates(double percentTraveled) {
 		double distanceTraveled = 0;
 
@@ -58,7 +58,7 @@ public class Path {
 //		System.out.println(percentTraveled);
 		double distanceToTravel = distanceTraveled * percentTraveled;
 		double Traveled = 0;
-		int segment = 0;	
+		int segment = 0;
 
 		for(int i = 0; i < points.size() - 1; i++) {
 			double gotY = Math.pow(points.get(i).getY() - points.get(i + 1).getY(), 2);
@@ -68,13 +68,13 @@ public class Path {
 			{
 				break;
 			}
-			
+
 			Traveled = Traveled + Math.sqrt(gotY + gotX);
 			segment = i;
-			
+
 		}
-		
-		double distance = distanceTraveled / Traveled;
+
+		double distance = distanceToTravel - Traveled;
 		double newY = Math.pow(points.get(segment).getY() - points.get(segment + 1).getY(), 2);
 		double newX = Math.pow(points.get(segment).getX() - points.get(segment + 1).getX(), 2);
 		double percentTraveledInSegment = distance / Math.sqrt(newY + newX);
